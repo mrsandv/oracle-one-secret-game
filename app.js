@@ -1,5 +1,6 @@
 let attempts = 1;
 let resetButton = document.getElementById("resetButton")
+let attemptButton = document.getElementById("attemptButton")
 let choosenNumbers = []
 let maxNumber = 10
 let secretNumber = getRandomNumber()
@@ -40,6 +41,7 @@ function resetGame() {
   cleanInput()
   initialConditions()
   resetButton.setAttribute("disabled", true)
+  attemptButton.removeAttribute("disabled")
 }
 
 function userTry() {
@@ -48,6 +50,7 @@ function userTry() {
   if (secretNumber === input) {
     assignTextToElement("p", `Acertaste  el número es: ${secretNumber} en ${attempts} ${attempts > 1 ? "veces" : "vez"}`)
     resetButton.removeAttribute("disabled")
+    attemptButton.setAttribute("disabled", true)
   } else {
     if (input > secretNumber) {
       assignTextToElement("p", "El número secreto es menor")
